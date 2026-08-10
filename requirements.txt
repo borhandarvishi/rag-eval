@@ -1,0 +1,19 @@
+# Core
+pandas>=2.2.0
+numpy>=1.26.0
+python-dotenv>=1.0.0
+tqdm>=4.66.0
+tabulate>=0.9.0
+
+# Milvus (3.x client matches remote Milvus 3.0; ORM APIs still work)
+pymilvus[model]>=2.4.0,<3.1.0
+
+# Embeddings & Reranking
+openai>=1.40.0
+sentence-transformers>=3.0.0
+torch>=2.2.0
+transformers>=4.40.0
+
+# Sparse BM25 helpers (pulled by pymilvus[model]; pinned for stability)
+scipy>=1.11.0
+scikit-learn>=1.4.0
