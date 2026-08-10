@@ -206,8 +206,13 @@ class EmbeddingEngine:
                 self._bm25 = pickle.load(fh)
             return
 
-        from pymilvus.model.sparse import BM25EmbeddingFunction
-        from pymilvus.model.sparse.bm25.tokenizers import build_default_analyzer
+        try:
+            from pymilvus.model.sparse import BM25EmbeddingFunction
+            from pymilvus.model.sparse.bm25.tokenizers import build_default_analyzer
+        except ModuleNotFoundError as exc:
+            raise ModuleNotFoundError(
+                "pymilvus.model is missing. Install with: pip install milvus-model"
+            ) from exc
 
         analyzer = build_default_analyzer(language="en")
         bm25 = BM25EmbeddingFunction(analyzer)
