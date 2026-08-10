@@ -211,7 +211,8 @@ class EmbeddingEngine:
             from pymilvus.model.sparse.bm25.tokenizers import build_default_analyzer
         except ModuleNotFoundError as exc:
             raise ModuleNotFoundError(
-                "pymilvus.model is missing. Install with: pip install milvus-model"
+                "pymilvus.model is missing. Install with: "
+                'pip install "pymilvus.model"   # or: pip install "pymilvus[model]"'
             ) from exc
 
         analyzer = build_default_analyzer(language="en")

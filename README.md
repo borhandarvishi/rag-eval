@@ -71,7 +71,8 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 # If you see: No module named 'pymilvus.model'
-pip install milvus-model
+pip install "pymilvus.model"
+# equivalent: pip install "pymilvus[model]"
 ```
 
 Dense vectors are fetched from OpenAI (batched). First rerank run downloads `BAAI/bge-reranker-base`. Dense/BM25 artifacts are cached under `cache/`.
