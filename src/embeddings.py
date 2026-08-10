@@ -282,7 +282,13 @@ class EmbeddingEngine:
     # -------------------------------------------------------------- reranker
     def _load_reranker(self):
         if self._reranker is None:
-            from sentence_transformers import CrossEncoder
+            try:
+                from sentence_transformers import CrossEncoder
+            except ModuleNotFoundError as exc:
+                raise ModuleNotFoundError(
+                    "sentence_transformers is missing. Install with: "
+                    "pip install sentence-transformers"
+                ) from exc
 
             self._reranker = CrossEncoder(
                 self.reranker_model_name, device=self.device
